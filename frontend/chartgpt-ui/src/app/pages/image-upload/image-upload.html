@@ -1,0 +1,59 @@
+<div class="page">
+  <div class="page-header">
+    <h2>🖼️ Image to Chart</h2>
+    <p>Upload a chart image and get the equivalent Apache ECharts v5 configuration.</p>
+  </div>
+
+  <div
+    class="drop-zone"
+    [class.drag-over]="dragOver"
+    [class.has-file]="previewUrl"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave()"
+    (drop)="onDrop($event)">
+
+    @if (!previewUrl) {
+      <div class="drop-placeholder">
+        <span class="drop-icon">📁</span>
+        <p>Drag & drop a chart image here</p>
+        <span class="or">or</span>
+        <label class="browse-btn">
+          Browse File
+          <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden />
+        </label>
+        <p class="supported">Supports: JPEG, PNG, WEBP, GIF (max 10MB)</p>
+      </div>
+    } @else {
+      <div class="preview-container">
+        <img [src]="previewUrl" alt="Chart preview" class="preview-image" />
+        <button class="clear-btn" (click)="clearFile()">✕ Remove</button>
+      </div>
+    }
+  </div>
+
+  @if (selectedFile) {
+    <button (click)="generate()" [disabled]="loading" class="generate-btn">
+      @if (loading) {
+        <span class="spinner"></span> Analyzing & Generating...
+      } @else {
+        ⚡ Generate Chart Code
+      }
+    </button>
+  }
+
+  @if (error) {
+    <div class="error-box">⚠️ {{ error }}</div>
+  }
+
+  @if (result?.description) {
+    <div class="description-box">
+      <h4>🔍 Extracted Description</h4>
+      <p>{{ result!.description }}</p>
+    </div>
+  }
+
+  @if (result) {
+    <app-chart-preview [jsCode]="result.javascript" />
+    <app-code-output [javascript]="result.javascript" [typescript]="result.typescript" />
+  }
+</div>

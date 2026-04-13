@@ -1,0 +1,18 @@
+<div class="preview-wrapper">
+  <div class="preview-header">
+    <span class="preview-title">📈 Live Preview</span>
+    <span class="preview-badge">ECharts v5</span>
+  </div>
+
+  @if (error) {
+    <div class="preview-error">⚠️ {{ error }}</div>
+  }
+
+  @if (chartOption) {
+    <div
+      echarts
+      [options]="chartOption"
+      class="chart-container">
+    </div>
+  }
+</div>

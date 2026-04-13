@@ -1,0 +1,20 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/.env
+
+# RAG cache files
+backend/rag/echarts_docs_cache.json
+backend/rag/faiss_index.pkl
+backend/rag/chunks.pkl
+
+# Angular
+frontend/chartgpt-ui/node_modules/
+frontend/chartgpt-ui/dist/
+frontend/chartgpt-ui/.angular/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,22 @@
+<div class="code-output">
+  <div class="code-header">
+    <div class="tabs">
+      <button
+        class="tab"
+        [class.active]="activeTab === 'javascript'"
+        (click)="activeTab = 'javascript'">
+        JavaScript
+      </button>
+      <button
+        class="tab"
+        [class.active]="activeTab === 'typescript'"
+        (click)="activeTab = 'typescript'">
+        TypeScript
+      </button>
+    </div>
+    <button class="copy-btn" (click)="copyCode()">
+      {{ copied ? '✅ Copied!' : '📋 Copy' }}
+    </button>
+  </div>
+  <pre class="code-block"><code>{{ activeCode }}</code></pre>
+</div>

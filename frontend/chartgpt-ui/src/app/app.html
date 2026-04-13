@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="brand-icon">📊</span>
+    <span class="brand-name">ChartGPT</span>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+    <a routerLink="/text" routerLinkActive="active">Text to Chart</a>
+    <a routerLink="/structured" routerLinkActive="active">Structured Input</a>
+    <a routerLink="/image" routerLinkActive="active">Image to Chart</a>
+  </div>
+</nav>
+<main class="main-content">
+  <router-outlet />
+</main>

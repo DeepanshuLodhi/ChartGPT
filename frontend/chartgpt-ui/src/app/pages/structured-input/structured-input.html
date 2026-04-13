@@ -1,0 +1,63 @@
+<div class="page">
+  <div class="page-header">
+    <h2>🎛️ Structured Input</h2>
+    <p>Select your chart options and let AI generate the ECharts v5 configuration.</p>
+  </div>
+
+  <div class="form-section">
+    <div class="form-group">
+      <label>Chart Type</label>
+      <div class="chart-type-grid">
+        @for (type of chartTypes; track type) {
+          <button
+            class="type-btn"
+            [class.selected]="selectedChartType === type"
+            (click)="selectedChartType = type">
+            {{ type }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Features</label>
+      <div class="features-grid">
+        @for (feature of availableFeatures; track feature) {
+          <button
+            class="feature-btn"
+            [class.selected]="isSelected(feature)"
+            (click)="toggleFeature(feature)">
+            {{ feature }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Data <span class="optional">(optional — JSON format)</span></label>
+      <textarea
+        [(ngModel)]="dataInput"
+        placeholder='e.g. {"categories": ["Jan","Feb","Mar"], "values": [120, 200, 150]}'
+        rows="4"
+        class="data-input">
+      </textarea>
+    </div>
+
+    <button (click)="generate()" [disabled]="loading" class="generate-btn">
+      @if (loading) {
+        <span class="spinner"></span> Generating...
+      } @else {
+        ⚡ Generate Chart Code
+      }
+    </button>
+  </div>
+
+  @if (error) {
+    <div class="error-box">⚠️ {{ error }}</div>
+  }
+
+  @if (result) {
+    <app-chart-preview [jsCode]="result.javascript" />
+    <app-code-output [javascript]="result.javascript" [typescript]="result.typescript" />
+  }
+</div>

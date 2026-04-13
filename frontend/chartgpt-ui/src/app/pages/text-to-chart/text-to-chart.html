@@ -1,0 +1,41 @@
+<div class="page">
+  <div class="page-header">
+    <h2>💬 Text to Chart</h2>
+    <p>Describe your chart in plain English and get ECharts v5 code instantly.</p>
+  </div>
+
+  <div class="input-section">
+    <textarea
+      [(ngModel)]="prompt"
+      placeholder="e.g. Create a bar chart showing monthly sales for Jan to Jun with tooltip and gradient colors"
+      rows="4"
+      class="prompt-input"
+    ></textarea>
+
+    <button (click)="generate()" [disabled]="loading || !prompt.trim()" class="generate-btn">
+      @if (loading) {
+        <span class="spinner"></span> Generating...
+      } @else {
+        ⚡ Generate Chart Code
+      }
+    </button>
+  </div>
+
+  <div class="examples-section">
+    <p class="examples-label">Try an example:</p>
+    <div class="examples-list">
+      @for (example of examples; track example) {
+        <button class="example-chip" (click)="useExample(example)">{{ example }}</button>
+      }
+    </div>
+  </div>
+
+  @if (error) {
+    <div class="error-box">⚠️ {{ error }}</div>
+  }
+
+  @if (result) {
+    <app-chart-preview [jsCode]="result.javascript" />
+    <app-code-output [javascript]="result.javascript" [typescript]="result.typescript" />
+  }
+</div>

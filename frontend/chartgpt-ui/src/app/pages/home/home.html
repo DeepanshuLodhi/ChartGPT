@@ -1,0 +1,22 @@
+<div class="home">
+  <div class="hero">
+    <h1>Welcome to <span class="highlight">ChartGPT</span></h1>
+    <p class="subtitle">Generate Apache ECharts v5 configurations instantly using AI. Support for text, structured input, and image-based chart generation.</p>
+  </div>
+
+  <div class="features-grid">
+    @for (feature of features; track feature.title) {
+      <div class="feature-card">
+        <div class="feature-icon">{{ feature.icon }}</div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+        <a [routerLink]="feature.route" class="feature-btn">{{ feature.label }}</a>
+      </div>
+    }
+  </div>
+
+  <div class="info-banner">
+    <span>⚡</span>
+    <p>Powered by <strong>Mistral</strong> LLM + <strong>LLaVA</strong> Vision + <strong>RAG</strong> over official ECharts v5 documentation</p>
+  </div>
+</div>
