@@ -245,7 +245,6 @@ EMBEDDING_MODEL=all-MiniLM-L6-v2
 
 The Angular frontend uses new Function() to evaluate the generated JavaScript option object in the browser runtime and passes it directly to ngx-echarts for rendering. This means the preview renders even if the code has minor issues that strict TypeScript would reject. The copy-paste code in the output panel is the fully validated and semantically fixed version intended for use in production or the Apache ECharts example editor.
 
----
 
 ## Resume Highlights
 
