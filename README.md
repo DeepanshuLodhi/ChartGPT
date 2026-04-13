@@ -246,11 +246,3 @@ EMBEDDING_MODEL=all-MiniLM-L6-v2
 The Angular frontend uses new Function() to evaluate the generated JavaScript option object in the browser runtime and passes it directly to ngx-echarts for rendering. This means the preview renders even if the code has minor issues that strict TypeScript would reject. The copy-paste code in the output panel is the fully validated and semantically fixed version intended for use in production or the Apache ECharts example editor.
 
 
-## Resume Highlights
-
-- Built end-to-end multimodal AI pipeline from scratch using only free and open-source tools
-- Implemented RAG system using real documentation scraped from apache/echarts-doc GitHub repository
-- Designed 5-stage output quality pipeline: Parse -> Syntax Fix -> Node.js Validate -> Semantic Fix -> Rebuild
-- Integrated local LLM (Mistral 7B) and Vision model (LLaVA) via Ollama with zero cloud dependency
-- Built Angular 20 frontend with live ECharts chart preview, JS/TS code output, and copy functionality
-- Deployed entirely on local machine with no API keys, no billing, and no data sent to external services
